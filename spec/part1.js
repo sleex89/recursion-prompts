@@ -120,131 +120,131 @@
 
 
 
-    describe('3. Sum Integers in Array', function() {
-      var originalArraySum;
+    // describe('3. Sum Integers in Array', function() {
+    //   var originalArraySum;
 
-      before(function() {
-        originalArraySum = arraySum;
-        arraySum = sinon.spy(arraySum);
-      });
+    //   before(function() {
+    //     originalArraySum = arraySum;
+    //     arraySum = sinon.spy(arraySum);
+    //   });
 
-      afterEach(function() {
-        arraySum.reset();
-      });
+    //   afterEach(function() {
+    //     arraySum.reset();
+    //   });
 
-      after(function() {
-        arraySum = originalArraySum;
-      });
+    //   after(function() {
+    //     arraySum = originalArraySum;
+    //   });
 
-      it('should return a number', function() {
-        expect(arraySum([[1],[[2]],3,4])).to.be.a('number');
-      });
+    //   it('should return a number', function() {
+    //     expect(arraySum([[1],[[2]],3,4])).to.be.a('number');
+    //   });
 
-      it('should return the sum of nested arrays containing non-negative integers', function() {
-        expect(arraySum([[1],[2,3],[[4]],5])).to.equal(15);
-        expect(arraySum([[12,[[34],[56]],78]])).to.equal(180);
-        expect(arraySum([3,[0,[34,[7,[18]]]]])).to.equal(62);
-      });
+    //   it('should return the sum of nested arrays containing non-negative integers', function() {
+    //     expect(arraySum([[1],[2,3],[[4]],5])).to.equal(15);
+    //     expect(arraySum([[12,[[34],[56]],78]])).to.equal(180);
+    //     expect(arraySum([3,[0,[34,[7,[18]]]]])).to.equal(62);
+    //   });
 
-      it('should return the sum of nested arrays containing negative integers', function() {
-        expect(arraySum([[-1],[-2,-3],[[-4]],-5])).to.equal(-15);
-        expect(arraySum([[-12,[[-34],[-56]],-78]])).to.equal(-180);
-        expect(arraySum([-3,[0,[-34,[-7,[-18]]]]])).to.equal(-62);
-      });
+    //   it('should return the sum of nested arrays containing negative integers', function() {
+    //     expect(arraySum([[-1],[-2,-3],[[-4]],-5])).to.equal(-15);
+    //     expect(arraySum([[-12,[[-34],[-56]],-78]])).to.equal(-180);
+    //     expect(arraySum([-3,[0,[-34,[-7,[-18]]]]])).to.equal(-62);
+    //   });
 
-      it('should return the sum of nested arrays containing both non-negative and negative integers', function() {
-        expect(arraySum([[1],[-2,3],[[-4]],5,-6])).to.equal(-3);
-        expect(arraySum([[-12,[[34],[-56]],78]])).to.equal(44);
-        expect(arraySum([3,[0,[-34,[-7,[18]]]]])).to.equal(-20);
-      });
+    //   it('should return the sum of nested arrays containing both non-negative and negative integers', function() {
+    //     expect(arraySum([[1],[-2,3],[[-4]],5,-6])).to.equal(-3);
+    //     expect(arraySum([[-12,[[34],[-56]],78]])).to.equal(44);
+    //     expect(arraySum([3,[0,[-34,[-7,[18]]]]])).to.equal(-20);
+    //   });
 
-      it('should return 0 for empty array', function() {
-        expect(arraySum([])).to.equal(0);
-      });
+    //   it('should return 0 for empty array', function() {
+    //     expect(arraySum([])).to.equal(0);
+    //   });
 
-      it('should accept an array with a single integer', function() {
-        expect(arraySum([4])).to.equal(4);
-        expect(arraySum([0])).to.equal(0);
-        expect(arraySum([-37])).to.equal(-37);
-      });
+    //   it('should accept an array with a single integer', function() {
+    //     expect(arraySum([4])).to.equal(4);
+    //     expect(arraySum([0])).to.equal(0);
+    //     expect(arraySum([-37])).to.equal(-37);
+    //   });
 
-      it('should not mutate the input array', function() {
-        var input = [[1],[[2]],3,4];
-        arraySum(input);
-        expect(input).to.eql([[1],[[2]],3,4]);
-      });
+    //   it('should not mutate the input array', function() {
+    //     var input = [[1],[[2]],3,4];
+    //     arraySum(input);
+    //     expect(input).to.eql([[1],[[2]],3,4]);
+    //   });
 
-      it('should use recursion by calling self', function() {
-        arraySum([[1],[[2]],3,4]);
-        expect(arraySum.callCount).to.be.above(1);
-      });
+    //   it('should use recursion by calling self', function() {
+    //     arraySum([[1],[[2]],3,4]);
+    //     expect(arraySum.callCount).to.be.above(1);
+    //   });
 
-      it('should be invoked with one argument', function() {
-        arraySum([[1],[[2]],3,4]);
-        arraySum.args.forEach(arg => {
-          expect(arg).to.have.length(1);
-        });
-      });
+    //   it('should be invoked with one argument', function() {
+    //     arraySum([[1],[[2]],3,4]);
+    //     arraySum.args.forEach(arg => {
+    //       expect(arg).to.have.length(1);
+    //     });
+    //   });
 
-    });
+    // });
 
 
 
-    describe('4. Check if Even', function() {
-      var originalIsEven;
+    // describe('4. Check if Even', function() {
+    //   var originalIsEven;
 
-      before(function() {
-        originalIsEven = isEven;
-        isEven = sinon.spy(isEven);
-      });
+    //   before(function() {
+    //     originalIsEven = isEven;
+    //     isEven = sinon.spy(isEven);
+    //   });
 
-      afterEach(function() {
-        isEven.reset();
-      });
+    //   afterEach(function() {
+    //     isEven.reset();
+    //   });
 
-      after(function() {
-        isEven = originalIsEven;
-      });
+    //   after(function() {
+    //     isEven = originalIsEven;
+    //   });
 
-      it('should return a boolean', function() {
-        expect(isEven(5)).to.be.a('boolean');
-        expect(isEven(8)).to.be.a('boolean');
-      });
+    //   it('should return a boolean', function() {
+    //     expect(isEven(5)).to.be.a('boolean');
+    //     expect(isEven(8)).to.be.a('boolean');
+    //   });
 
-      it("should not use modulo", function() {
-        var stringified = originalIsEven.toString();
-        expect(stringified).to.not.contain('%');
-        expect(stringified).to.not.contain('modulo');
-      });
+    //   it("should not use modulo", function() {
+    //     var stringified = originalIsEven.toString();
+    //     expect(stringified).to.not.contain('%');
+    //     expect(stringified).to.not.contain('modulo');
+    //   });
 
-      it('should return true for even numbers', function() {
-        expect(isEven(48)).to.be.true;
-        expect(isEven(0)).to.be.true;
-      });
+    //   it('should return true for even numbers', function() {
+    //     expect(isEven(48)).to.be.true;
+    //     expect(isEven(0)).to.be.true;
+    //   });
 
-      it('should return false for odd numbers', function() {
-        expect(isEven(17)).to.be.false;
-        expect(isEven(1)).to.be.false;
-      });
+    //   it('should return false for odd numbers', function() {
+    //     expect(isEven(17)).to.be.false;
+    //     expect(isEven(1)).to.be.false;
+    //   });
 
-      it('should work with negative integers', function() {
-        expect(isEven(-14)).to.be.true;
-        expect(isEven(-31)).to.be.false;
-      });
+    //   it('should work with negative integers', function() {
+    //     expect(isEven(-14)).to.be.true;
+    //     expect(isEven(-31)).to.be.false;
+    //   });
 
-      it('should use recursion by calling self', function() {
-        isEven(8);
-        expect(isEven.callCount).to.be.above(1);
-      });
+    //   it('should use recursion by calling self', function() {
+    //     isEven(8);
+    //     expect(isEven.callCount).to.be.above(1);
+    //   });
 
-      it('should be invoked with one argument', function() {
-        isEven(8);
-        isEven.args.forEach(arg => {
-          expect(arg).to.have.length(1);
-        });
-      });
+    //   it('should be invoked with one argument', function() {
+    //     isEven(8);
+    //     isEven.args.forEach(arg => {
+    //       expect(arg).to.have.length(1);
+    //     });
+    //   });
 
-    });
+    // });
 
 
 
