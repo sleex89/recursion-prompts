@@ -440,27 +440,71 @@ var flatten = function(array) {
 
 // 31. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {p:1, o:2, t:2, a:1}
-var letterTally = function(str, obj) {
+var letterTally = function(str) {
+  var obj = {};
+  if(str.length === 0){
+    return obj
+  }
+  if(obj[str[0]]){
+    obj[str[0]]++
+  } else {
+    obj[str[0]] = 1;
+  }
+  return letterTally(str.substring(1), obj)
+  return obj;
+
+  //DID NOT SOLVE
 };
+
 
 // 32. Eliminate consecutive duplicates in a list. If the list contains repeated
 // elements they should be replaced with a single copy of the element. The order of the
 // elements should not be changed.
 // compress([1,2,2,3,4,4,5,5,5]) // [1,2,3,4,5]
-// compress([1,2,2,3,4,4,2,5,5,5,4,4]) // [1,2,3,4,2,5,4]
+
 var compress = function(list) {
+  var newArr = [];
+  if(list.length === 1){
+    return newArr.concat(list[0])
+  }
+  if(list[0] === list[1]){
+    return newArr.concat(compress(list.slice(1)));
+  } else {
+    newArr.push(list[0]);
+    return newArr.concat(compress(list.slice(1)));
+  }
+
 };
 
 // 33. Augument every element in a list with a new value where each element is an array
 // itself.
 // augmentElements([[],[3],[7]], 5); // [[5],[3,5],[7,5]]
 var augmentElements = function(array, aug) {
+  var newArr = [];
+  array[0].push(aug);
+  newArr.push(array[0]);
+  if(array.length === 1){
+    return newArr;
+  }
+  return newArr.concat(augmentElements(array.slice(1), aug))
 };
 
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  var first = array[0];
+  var next = array[1]
+  var results = [];
+  if(array.length === 1){
+    return first;
+  }
+  if(first === 0 && next === 0){
+    return results.concat(minimizeZeroes(array.slice(1)))
+  } else {
+    results.push(first);
+    return results.concat(minimizeZeroes(array.slice(1)))
+  }
 };
 
 // 35. Alternate the numbers in an array between positive and negative regardless of
@@ -468,6 +512,20 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  var results = [];
+  var first = Math.abs(array[0]);
+  var next = array[1]
+  if(array.length <= 1){
+    return first;
+  }
+  if(next > 0){
+    next = next * -1;
+  }
+  if(array.length === 2){
+    return [first, next]
+  }
+  results.push(first, next);
+  return results.concat(alternateSign(array.slice(2)))
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
